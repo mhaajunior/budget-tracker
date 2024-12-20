@@ -1,5 +1,6 @@
 "use server";
 
+import { convertToLocalDate } from "@/lib/helpers";
 import prisma from "@/lib/prisma";
 import {
   CreateTransactionSchema,
@@ -39,7 +40,7 @@ export async function CreateTransaction(form: CreateTransactionSchemaType) {
       data: {
         userId: user.id,
         amount,
-        date,
+        date: convertToLocalDate(date),
         description: description || "",
         type,
         category: categoryRow.name,

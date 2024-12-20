@@ -22,3 +22,9 @@ export function GetFormatterForCurrency(currency: string) {
     currency,
   });
 }
+
+export function convertToLocalDate(date: Date): Date {
+  // หักลบเวลา UTC เพื่อแปลงเป็นเวลาท้องถิ่น
+  const localOffset = date.getTimezoneOffset() * 60000; // ค่า offset ในมิลลิวินาที
+  return new Date(date.getTime() - localOffset);
+}
