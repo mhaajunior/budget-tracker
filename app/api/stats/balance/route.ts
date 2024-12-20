@@ -13,9 +13,6 @@ export async function GET(request: Request) {
   const from = searchParams.get("from");
   const to = searchParams.get("to");
 
-  console.log("from2", from);
-  console.log(to);
-
   const queryParams = OverviewQuerySchema.safeParse({ from, to });
 
   if (!queryParams.success) {
